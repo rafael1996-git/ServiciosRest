@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src=" https://unpkg.com/sweetalert/dist/sweetalert.min.js "> </script>
+<title>Insert title here</title>
+</head>
+<body>
+<div class="container">
+  <h1>Ejemplo de invocacion a los 3 servicios y replicacion de error</h1>
+  <p>Esta demo es para replicacion del error con politicas de cors</p>
+  	<button type="button" class="btn btn-primary .btn-lg" id="consultar"  >Generar Token</button>
+	<button type="button" class="btn btn-success .btn-lg" id="consultarGeoprocesamiento">Generar Remesa</button>
+	<button type="button" class="btn btn-info .btn-lg" id="consultarStatus">Mostrar Status de Avance</button>
+	<button type="button" class="btn btn-info .btn-lg" id="ObtenerEDMSLM">ObtenerEDMSLM</button>
+</div>
+
+</body>
+<script type="text/javascript">
+	$("#consultar")
+			.click(
+					function() {
+						$
+								.ajax({
+									type : "GET",
+									url : "http://localhost:8080/WebPrueba-0.0.1-SNAPSHOT/",
+									contentType : "application/json; charset=utf-8",
+									dataType : "json",
+									success : function(data) {
+										swal({
+										 title: "EXITO!",
+										  text: "operacion ejecutada correctamente",
+										  icon: "success",
+										  button: "Cerrar!",
+										});
+										console.log(data);
+									},
+									failure : function(data) {
+										swal(" Oops",+ data.responseText+" ocurrio un error" ,  "Err_Failed" );
+									},
+									error : function(data) {
+										swal(" Oops",+ data.responseText+" ocurrio un error" ,  "Error" );
+									}
+								});
+					});
+</script>
+<script type="text/javascript">
+	$("#consultarGeoprocesamiento")
+			.click(
+					function() {
+						$
+								.ajax({
+									type : "GET",
+									url : "http://localhost:8080/prueba/",
+									contentType : "application/json; charset=utf-8",
+									dataType : "json",
+									success : function(data) {
+										swal({
+											  title: "EXITO!",
+											  text: "operacion ejecutada correctamente",
+											  icon: "success",
+											  button: "Cerrar!",
+											});
+										console.log(data);
+									},
+									failure : function(data) {
+										swal("Oops" ,+ data.responseText+" ocurrio un error" ,  "Err_Failed" );
+									},
+									error : function(data) {
+										swal("Oops" ,+ data.responseText+" ocurrio un error" ,  "Error" );
+									}
+								});
+					});
+</script>
+<script type="text/javascript">
+	$("#consultarStatus")
+			.click(
+					function() {
+						$
+								.ajax({
+									type : "GET",
+									url : "http://10.12.0.140:8080/GenerarRemesa/dce/GenerarEntidad/status?entidad=12&remesa=202213",
+									contentType : "application/json; charset=utf-8",
+									dataType : "json",
+									success : function(data) {
+										swal({
+										 title: "EXITO!",
+										  text: "operacion ejecutada correctamente",
+										  icon: "success",
+										  button: "Cerrar!",
+										});
+										console.log(data);
+									},
+									failure : function(data) {
+										swal("Oops" ,+ data.responseText+" ocurrio un error" ,  "Err_Failed" );
+									},
+									error : function(data) {
+										swal("Oops" ,+ data.responseText+" ocurrio un error" ,  "Error" );
+									}
+								});
+					});
+</script>
+
+<script type="text/javascript">
+	$("#ObtenerEDMSLM")
+			.click(
+					function() {
+						$
+								.ajax({
+									type : "GET",
+									url : "http://172.19.122.113:8080/Geoinfomap/dce/ObtenerEDMSLM?entidad=1&longitud=-102.27900617&latitud=21.92905651",
+									contentType : "application/json; charset=utf-8",
+									dataType : "json",
+									success : function(data) {
+										swal({
+										 title: "EXITO!",
+										  text: "operacion ejecutada correctamente",
+										  icon: "success",
+										  button: "Cerrar!",
+										});
+										console.log(data);
+									},
+									failure : function(data) {
+										swal("Oops" ,+ data.responseText+" ocurrio un error" ,  "Err_Failed" );
+									},
+									error : function(data) {
+										swal("Oops" ,+ data.responseText+" ocurrio un error" ,  "Error" );
+									}
+								});
+					});
+</script>
+</html>
